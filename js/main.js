@@ -41,22 +41,38 @@
   });
 
   /* версия лаунчера с GitHub */
-  var ver = document.getElementById("ver"), rel = null;
-  function drawVer() {
-    if (!ver || !rel) return;
-    var a = (rel.assets || []).filter(function (x) { return /\.exe$/i.test(x.name); })[0] || (rel.assets || [])[0];
-    var loc = window.DECAY_LANG === "en" ? "en-GB" : "ru-RU", parts = [];
-    parts.push(t("Версия", "Version") + " <b>" + String(rel.tag_name || "").replace(/[<>&]/g, "") + "</b>");
-    if (a && a.size) parts.push((a.size / 1048576).toFixed(1) + " " + t("МБ", "MB"));
-    if (rel.published_at) parts.push(new Date(rel.published_at).toLocaleDateString(loc, { day: "numeric", month: "short", year: "numeric" }));
-    ver.innerHTML = parts.join(" · "); ver.hidden = false;
+  var ver = document.getElementById("ver"), dlV = document.getElementById("dlVer"), rel = null;
+  function asset(re) { return ((rel && rel.assets) || []).filter(function (x) { return re.test(x.name); })[0]; }
+  function line() {
+    var a = asset(/\.exe$/i) || ((rel.assets || [])[0]), loc = window.DECAY_LANG === "en" ? "en-GB" : "ru-RU", p = [];
+    p.push(t("Версия", "Version") + " <b>" + String(rel.tag_name || "").replace(/[<>&]/g, "") + "</b>");
+    if (a && a.size) p.push((a.size / 1048576).toFixed(1) + " " + t("МБ", "MB"));
+    if (rel.published_at) p.push(new Date(rel.published_at).toLocaleDateString(loc, { day: "numeric", month: "short", year: "numeric" }));
+    return p.join(" · ");
   }
-  if (ver && C.repo) {
-    try { var c = JSON.parse(sessionStorage.getItem("rel") || "null"); if (c && Date.now() - c.at < 6e5) { rel = c.r; drawVer(); } } catch (e) {}
+  function draw() {
+    if (!rel) return;
+    if (ver) { ver.innerHTML = line(); ver.hidden = false; }
+    if (dlV) {
+      dlV.innerHTML = line();
+      var w = asset(/\.exe$/i), k = asset(/\.apk$/i), lg = document.getElementById("dlLog");
+      if (w) document.getElementById("dlWin").href = w.browser_download_url;
+      if (k) { var ak = document.getElementById("dlApk"); ak.href = k.browser_download_url; ak.removeAttribute("target"); }
+      if (lg && rel.body) { lg.removeAttribute("data-i"); lg.textContent = rel.body.replace(/\r/g, "").replace(/[#*`]/g, "").trim().slice(0, 1500); }
+    }
+  }
+  if ((ver || dlV) && C.repo) {
+    try { var c = JSON.parse(sessionStorage.getItem("rel") || "null"); if (c && Date.now() - c.at < 6e5) { rel = c.r; draw(); } } catch (e) {}
     if (!rel) fetch("https://api.github.com/repos/" + C.repo + "/releases/latest").then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (j) { rel = j; drawVer(); try { sessionStorage.setItem("rel", JSON.stringify({ at: Date.now(), r: j })); } catch (e) {} })
+      .then(function (j) { rel = j; draw(); try { sessionStorage.setItem("rel", JSON.stringify({ at: Date.now(), r: j })); } catch (e) {} })
       .catch(function () {});
-    addEventListener("langchange", drawVer);
+    addEventListener("langchange", draw);
+  }
+
+  /* статистика посещений (GoatCounter, без cookie; уважает Do Not Track) */
+  if (C.goatcounter && navigator.doNotTrack !== "1") {
+    var gc = document.createElement("script"); gc.async = true; gc.src = "https://gc.zgo.at/count.js";
+    gc.setAttribute("data-goatcounter", "https://" + C.goatcounter + ".goatcounter.com/count"); document.head.appendChild(gc);
   }
 
   /* форма отзыва -> GitHub Issues */
