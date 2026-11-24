@@ -3,18 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>DECAY — Survival Multiplayer by Real_Studio</title>
+<title data-i="63">DECAY — Survival Multiplayer by Real_Studio</title>
 <meta name="description" content="DECAY — кроссплатформенная survival-игра от Real_Studio. Скачай лаунчер и окунись в ржавый мир выживания.">
 <meta name="theme-color" content="#0b0a08">
 <meta property="og:title" content="DECAY">
 <meta property="og:description" content="Survive · Rebuild · Decay">
-<meta property="og:image" content="images/logo.svg">
 <link rel="icon" href="images/icon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 <div class="scene" aria-hidden="true"></div>
@@ -22,72 +20,56 @@
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="bar" id="bar">
-  <a class="brand" href="#top"><img src="images/icon.svg" alt="">DE<span>CAY</span></a>
-  <nav class="menu"><a href="#features">Фичи</a><a href="#platforms">Платформы</a><a href="#start">Старт</a></nav>
-  <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe" style="min-height:38px;padding:8px 16px;font-size:16px">Скачать</a>
+  <a class="brand" href="./"><img src="images/icon.svg" alt="">DE<span>CAY</span></a>
+  <nav class="menu"><a class="act" href="#features" data-i="64">Игра</a><a class="" href="roadmap/" data-i="65">Roadmap</a><a class="" href="devlog/" data-i="38">Девлог</a><a class="" href="#faq" data-i="66">FAQ</a><a class="" href="feedback/" data-i="39">Отзыв</a></nav>
+  <div class="tools">
+    <button class="ic" id="lang" type="button" aria-label="Language">EN</button>
+    <button class="ic" id="snd" type="button" aria-pressed="false" aria-label="Sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9z"/><path class="w" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m16 9 5 6m0-6-5 6"/></svg></button>
+    <a class="btn dl" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe" data-i="67">Скачать</a>
+  </div>
 </div>
 <main id="top">
-  <header class="hero">
-    <div class="tag">Игра от <b>Real_Studio</b></div>
-    <img class="hero-logo" src="images/logo.svg" alt="DECAY" width="600" height="600">
+<header class="hero">
+    <div class="tag"><span data-i="36">Игра от</span> <b>Real_Studio</b></div>
+    <span class="shake" id="shake"><img class="hero-logo" src="images/logo.svg" alt="DECAY" width="600" height="600"></span>
     <h1 class="word" aria-label="DECAY">DE<span>CAY</span></h1>
     <div class="sub"><i></i>Survive · Rebuild<i></i></div>
     <nav class="btns">
-      <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Скачать лаунчер</a>
-      <a class="btn alt" href="#features">Узнать больше</a>
+      <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg><span data-i="37">Скачать лаунчер</span></a>
+      <a class="btn" href="https://t.me/Real_Studio_Game" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.5l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3z"/></svg>Telegram</a>
+      <a class="btn alt" href="roadmap/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 21V4m0 0h11l-2 4 2 4H5"/></svg>Roadmap</a>
+      <a class="btn alt" href="devlog/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/></svg><span data-i="38">Девлог</span></a>
+      <a class="btn alt" href="feedback/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></svg><span data-i="39">Отзыв</span></a>
     </nav>
-    <div class="meta"><span>Windows 10/11</span><span>Android</span><span>Бесплатно</span><span>Последняя версия</span></div>
+    <div class="ver" id="ver" hidden></div>
+    <div class="meta"><span>Windows 10/11</span><span>Android</span><span data-i="40">Бесплатно</span><span data-i="41">Последняя версия</span></div>
   </header>
-
   <div class="hazard"></div>
   <div class="stats" style="margin-top:40px">
-    <div><b>2</b><small>Платформы</small></div><div><b>∞</b><small>Миров</small></div>
-    <div><b>24/7</b><small>Серверы</small></div><div><b>100%</b><small>Хардкор</small></div>
+    <div><b>2</b><small data-i="42">Платформы</small></div><div><b>∞</b><small data-i="43">Миров</small></div>
+    <div><b>24/7</b><small data-i="44">Серверы</small></div><div><b>100%</b><small data-i="7">Хардкор</small></div>
   </div>
-
-  <section id="features"><div class="wrap">
-    <div class="head rv"><div class="kick">Возможности</div><h2 class="t">Что делает <span>Decay</span> особенной</h2>
-      <p class="lead">Каждая механика продумана до мелочей. Здесь нет места случайностям — только твои решения и их последствия.</p></div>
-    <div class="grid">
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Выживание</h3><p>Ограниченные ресурсы, суровые условия и постоянная угроза. Каждое решение имеет значение.</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Мультиплеер</h3><p>Объединяйся с друзьями или вступай в конфликт. Открытый мир, где каждый строит свою историю.</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Крафт</h3><p>Собирай, создавай, улучшай. Глубокая система рецептов и апгрейдов.</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Хардкор</h3><p>Смерть — не конец, но каждый раз всё сложнее. Мир помнит твои ошибки.</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Атмосфера</h3><p>Ржавый индустриальный стиль. Мрачный мир, где важна каждая деталь.</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Открытая разработка</h3><p>Лаунчер и обновления доступны публично. Следи за развитием проекта изнутри.</p></div></div>
-    </div>
-  </div></section>
-
-  <section id="platforms"><div class="wrap">
-    <div class="head rv"><div class="kick">Кроссплатформенность</div><h2 class="t">Играй <span>где угодно</span></h2>
-      <p class="lead">Один аккаунт — любые устройства. Прогресс синхронизируется между платформами.</p></div>
-    <div class="grid">
-      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st">Готово</span><h3>Windows</h3><p>Windows 10 / 11 · 64-bit</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st">Готово</span><h3>Android</h3><p>Android 8.0+ · ARM64</p></div></div>
-      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st dev">В разработке</span><h3>Linux</h3><p>Ubuntu · Arch · Fedora</p></div></div>
-    </div>
-  </div></section>
-
-  <section id="start"><div class="wrap">
-    <div class="head rv"><div class="kick">Как начать</div><h2 class="t">Три шага до <span>игры</span></h2>
-      <p class="lead">Установка занимает меньше минуты. Дальше всё зависит только от тебя.</p></div>
-    <div class="grid">
-      <div class="card rv"><div class="in"><div class="num">01</div><h3>Скачай</h3><p>Нажми «Скачать лаунчер». Файл загрузится напрямую.</p></div></div>
-      <div class="card rv"><div class="in"><div class="num">02</div><h3>Запусти</h3><p>Открой .exe — лаунчер сам скачает последнюю версию игры и нужные файлы.</p></div></div>
-      <div class="card rv"><div class="in"><div class="num">03</div><h3>Играй</h3><p>Войди в аккаунт, выбери сервер и окунись в мир Decay.</p></div></div>
-    </div>
-  </div></section>
-
+  <section id="features"><div class="wrap"><div class="head rv"><div class="kick" data-i="45">Возможности</div><h2 class="t"><span data-i="46">Что делает</span> <span class="am">Decay</span> <span data-i="47">особенной</span></h2><p class="lead" data-i="48">Каждая механика продумана до мелочей. Здесь нет места случайностям — только твои решения и их последствия.</p></div>
+    <div class="grid"><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="1">Выживание</h3><p data-i="2">Ограниченные ресурсы, суровые условия и постоянная угроза. Каждое решение имеет значение.</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="3">Мультиплеер</h3><p data-i="4">Объединяйся с друзьями или вступай в конфликт. Открытый мир, где каждый строит свою историю.</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="5">Крафт</h3><p data-i="6">Собирай, создавай, улучшай. Глубокая система рецептов и апгрейдов.</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="7">Хардкор</h3><p data-i="8">Смерть — не конец, но каждый раз всё сложнее. Мир помнит твои ошибки.</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="9">Атмосфера</h3><p data-i="10">Ржавый индустриальный стиль. Мрачный мир, где важна каждая деталь.</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><h3 data-i="11">Живая разработка</h3><p data-i="12">Лаунчер и обновления доступны всем. Следи за развитием проекта в девлоге и Telegram.</p></div></div></div></div></section>
+  <section id="platforms"><div class="wrap"><div class="head rv"><div class="kick" data-i="49">Кроссплатформенность</div><h2 class="t"><span data-i="22">Играй</span> <span class="am" data-i="50">где угодно</span></h2><p class="lead" data-i="51">Один аккаунт — любые устройства. Прогресс синхронизируется между платформами.</p></div>
+    <div class="grid"><div class="card rv"><div class="hazard"></div><div class="in"><span class="st" data-i="13">Готово</span><h3>Windows</h3><p data-i="14">Windows 10 / 11 · 64-bit</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><span class="st" data-i="13">Готово</span><h3>Android</h3><p data-i="15">Android 8.0+ · ARM64</p></div></div><div class="card rv"><div class="hazard"></div><div class="in"><span class="st dev" data-i="16">В разработке</span><h3>Linux</h3><p data-i="17">Ubuntu · Arch · Fedora</p></div></div></div></div></section>
+  <section id="start"><div class="wrap"><div class="head rv"><div class="kick" data-i="52">Как начать</div><h2 class="t"><span data-i="53">Три шага до</span> <span class="am" data-i="54">игры</span></h2><p class="lead" data-i="55">Установка занимает меньше минуты. Дальше всё зависит только от тебя.</p></div>
+    <div class="grid"><div class="card rv"><div class="in"><div class="num">01</div><h3 data-i="18">Скачай</h3><p data-i="19">Нажми «Скачать лаунчер». Файл загрузится напрямую.</p></div></div><div class="card rv"><div class="in"><div class="num">02</div><h3 data-i="20">Запусти</h3><p data-i="21">Открой .exe — лаунчер сам скачает последнюю версию игры и нужные файлы.</p></div></div><div class="card rv"><div class="in"><div class="num">03</div><h3 data-i="22">Играй</h3><p data-i="23">Войди в аккаунт, выбери сервер и окунись в мир Decay.</p></div></div></div></div></section>
+  <section id="faq"><div class="wrap narrow"><div class="head rv"><div class="kick" data-i="56">Вопросы и ответы</div><h2 class="t"><span data-i="57">Частые</span> <span class="am" data-i="58">вопросы</span></h2><p class="lead" data-i="59">Не нашёл ответ? Напиши в Telegram или оставь отзыв.</p></div>
+    <details class="qa rv"><summary data-i="24">Это бесплатно?</summary><p data-i="25">Да, лаунчер и игра бесплатны.</p></details><details class="qa rv"><summary data-i="26">На каких устройствах можно играть?</summary><p data-i="27">Сейчас — Windows 10/11 (64-bit) и Android 8.0+. Linux в разработке.</p></details><details class="qa rv"><summary data-i="28">Как установить игру?</summary><p data-i="29">Скачай лаунчер, запусти его — он сам загрузит игру и все файлы. Подробнее в разделе «Как начать».</p></details><details class="qa rv"><summary data-i="30">Антивирус ругается на .exe. Что делать?</summary><p data-i="31">Лаунчер — новый малоизвестный файл, поэтому антивирус может предупреждать. Скачивай его только с этого сайта или из официального Telegram-канала. Если сомневаешься — напиши нам.</p></details><details class="qa rv"><summary data-i="32">Где сообщить об ошибке или предложить идею?</summary><p data-i="33">На странице «Отзыв» или в Telegram-канале игры.</p></details><details class="qa rv"><summary data-i="34">Когда выйдет версия для Linux?</summary><p data-i="35">Точной даты пока нет. Следи за Roadmap и девлогом.</p></details></div></section>
   <section class="cta"><div class="wrap">
-    <h2 class="t">Готов <span>выжить</span>?</h2><p class="lead">Твой мир Decay ждёт</p>
-    <nav class="btns"><a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe">Скачать лаунчер</a></nav>
+    <h2 class="t"><span data-i="60">Готов</span> <span class="am" data-i="61">выжить</span>?</h2><p class="lead" data-i="62">Твой мир Decay ждёт</p>
+    <nav class="btns"><a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg><span data-i="37">Скачать лаунчер</span></a><a class="btn alt" href="https://t.me/Real_Studio_Game" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.5l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3z"/></svg>Telegram</a></nav>
   </div></section>
 </main>
 <footer>
-  <a href="#features">Фичи</a><a href="#platforms">Платформы</a><a href="#start">Старт</a><br><br>
-  © <span id="yr">2026</span> DECAY · Real_Studio
+  <a href="#features" data-i="64">Игра</a><a href="roadmap/" data-i="65">Roadmap</a><a href="devlog/" data-i="38">Девлог</a><a href="#faq" data-i="66">FAQ</a><a href="feedback/" data-i="39">Отзыв</a><a href="https://t.me/Real_Studio_Game" target="_blank" rel="noopener">Telegram</a><a href="https://github.com/vovapro01345/Decay" target="_blank" rel="noopener">GitHub</a>
+  <br><br>© <span id="yr">2026</span> DECAY · Real_Studio
 </footer>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/fx.js" defer></script>
+<script src="js/sound.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

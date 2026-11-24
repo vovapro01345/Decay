@@ -1,8 +1,43 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 — DECAY</title>
-<link rel="icon" href="images/icon.svg"><link rel="stylesheet" href="css/site.css"></head><body>
-<div class="vignette"></div><div class="grain"></div>
-<main style="position:relative;z-index:2;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
-<div class="hazard" style="width:min(80vw,420px)"></div>
-<h1 style="font:700 clamp(80px,22vw,180px)/1 var(--head);margin:18px 0 0;color:var(--amber)">404</h1>
-<p style="font:500 20px var(--head);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 24px">Здесь ничего нет</p>
-<nav class="btns"><a class="btn" href="./">На главную</a></nav></main></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title data-i="109">404 — DECAY</title>
+<meta name="description" content="404">
+<meta name="theme-color" content="#0b0a08">
+<meta property="og:title" content="DECAY">
+<meta property="og:description" content="Survive · Rebuild · Decay">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.className+=" js"</script>
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="scene" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="bar" id="bar">
+  <a class="brand" href="./"><img src="images/icon.svg" alt="">DE<span>CAY</span></a>
+  <nav class="menu"><a class="" href="#features" data-i="64">Игра</a><a class="" href="roadmap/" data-i="65">Roadmap</a><a class="" href="devlog/" data-i="38">Девлог</a><a class="" href="#faq" data-i="66">FAQ</a><a class="" href="feedback/" data-i="39">Отзыв</a></nav>
+  <div class="tools">
+    <button class="ic" id="lang" type="button" aria-label="Language">EN</button>
+    <button class="ic" id="snd" type="button" aria-pressed="false" aria-label="Sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9z"/><path class="w" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/><path class="x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m16 9 5 6m0-6-5 6"/></svg></button>
+    <a class="btn dl" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe" data-i="67">Скачать</a>
+  </div>
+</div>
+<main id="top">
+<div class="hero"><h1 class="word" style="color:var(--amber)">404</h1><p class="lead" data-i="107">Здесь ничего нет</p><nav class="btns" style="margin-top:20px"><a class="btn" href="./"><span data-i="108">На главную</span></a></nav></div></main>
+<footer>
+  <a href="#features" data-i="64">Игра</a><a href="roadmap/" data-i="65">Roadmap</a><a href="devlog/" data-i="38">Девлог</a><a href="#faq" data-i="66">FAQ</a><a href="feedback/" data-i="39">Отзыв</a><a href="https://t.me/Real_Studio_Game" target="_blank" rel="noopener">Telegram</a><a href="https://github.com/vovapro01345/Decay" target="_blank" rel="noopener">GitHub</a>
+  <br><br>© <span id="yr">2026</span> DECAY · Real_Studio
+</footer>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/fx.js" defer></script>
+<script src="js/sound.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

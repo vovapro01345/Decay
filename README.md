@@ -3,19 +3,26 @@
 Статический сайт игры DECAY (Real_Studio). Без сборки и зависимостей.
 
 ```
-index.html      страница
-404.html        страница ошибки
-css/site.css    база: шрифты, цвета, кнопки, фон
-css/style.css   стили страницы
-js/fx.js        падающий металлолом (canvas)
-js/main.js      меню, появление блоков при прокрутке
-images/         logo.svg, icon.svg, scene.svg
-fonts/          Oswald (кириллица и латиница)
+index.html          главная (+ FAQ)
+roadmap/            план разработки
+devlog/             девлог
+feedback/           форма отзыва -> GitHub Issues
+404.html
+css/site.css        база: шрифты, цвета, кнопки, фон
+css/style.css       стили страниц
+js/config.js        репозиторий и Telegram (меняется здесь)
+js/i18n.js          переключатель RU/EN (английский текст здесь)
+js/fx.js            падающий металлолом
+js/sound.js         звук (синтез в браузере, без файлов)
+js/main.js          шапка, анимации, версия лаунчера, форма
+images/ fonts/
 ```
 
-## Публикация на GitHub Pages
-1. Залей содержимое папки в репозиторий (index.html в корне).
-2. Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
-3. Сайт откроется на `https://<логин>.github.io/<репозиторий>/`.
+## GitHub Pages
+Settings → Pages → Deploy from a branch → `main` / `(root)`.
 
-Все пути относительные, поэтому сайт работает и в подпапке репозитория.
+## Что править
+- Девлог: скопируй блок `<article>` в `devlog/index.html`.
+- Roadmap: пункты `<li>` в `roadmap/index.html`.
+- `js/config.js`: `repo` — откуда берётся версия лаунчера (релизы), `issues` — репозиторий сайта для отзывов (в нём должны быть включены Issues).
+- Новый текст на двух языках: добавь строку в HTML и английскую версию в `js/i18n.js`.
