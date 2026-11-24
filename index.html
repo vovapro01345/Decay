@@ -8,352 +8,86 @@
 <meta name="theme-color" content="#0b0a08">
 <meta property="og:title" content="DECAY">
 <meta property="og:description" content="Survive · Rebuild · Decay">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,8 94,90 6,90' fill='%23f2b705' stroke='%230b0a08' stroke-width='8'/%3E%3C/svg%3E">
-<link rel="preload" href="fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin="">
+<meta property="og:image" content="images/logo.svg">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="css/site.css">
-<style>
-  :root{--green:#7bd36b}
-  html{scroll-behavior:smooth}
-  main{position:relative;z-index:2}
+<link rel="stylesheet" href="css/style.css">
 
-  /* ---------- HERO ---------- */
-  .hero{
-    min-height:100svh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:24px 16px calc(8vh + 24px);position:relative;
-  }
-  .logo{position:relative;display:flex;flex-direction:column;align-items:center;margin:0;width:min(82vw,600px)}
-  .sign-wrap{display:block;position:relative;width:38%;aspect-ratio:1/1;margin-bottom:2%}
-  .beacon{
-    display:block;position:absolute;left:50%;top:56%;width:230%;aspect-ratio:1;
-    transform:translate(-50%,-50%);border-radius:50%;
-    background:radial-gradient(circle,rgba(255,170,30,.38) 0%,rgba(255,140,20,.12) 35%,rgba(255,120,20,0) 65%);
-    opacity:.25;animation:beacon 3.2s infinite;pointer-events:none;
-  }
-  .sign{
-    position:absolute;inset:0;width:100%;height:100%;
-    transform-origin:50% 6%;animation:sway 5.6s ease-in-out infinite;
-    filter:drop-shadow(0 14px 18px rgba(0,0,0,.6));
-  }
-  .shake{display:block;position:absolute;inset:0}
-  @keyframes sway{0%,100%{transform:rotate(-2.4deg)}50%{transform:rotate(2.4deg)}}
-  @keyframes beacon{0%,100%{opacity:.22}6%{opacity:1}11%{opacity:.3}16%{opacity:.95}24%{opacity:.22}}
-
-  .word{
-    display:flex;justify-content:center;margin:0;white-space:nowrap;
-    font:900 clamp(64px,14vw,150px)/0.85 var(--head);
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
-    filter:drop-shadow(0 10px 16px rgba(0,0,0,.65));
-  }
-  .word .a{color:var(--amber);text-shadow:0 0 30px rgba(242,183,5,.35)}
-
-  .tagline{
-    margin-top:clamp(14px,2.4vh,22px);
-    font:500 clamp(14px,2vw,20px)/1 var(--head);
-    letter-spacing:.42em;padding-left:.42em;
-    color:var(--amber);text-transform:uppercase;
-    text-shadow:0 0 18px rgba(242,183,5,.35),0 2px 0 #000;
-  }
-  .btns{margin-top:clamp(20px,3.6vh,34px);max-width:680px;width:100%}
-
-  .meta{
-    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;
-    font:12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
-  }
-  .meta span{display:inline-flex;align-items:center;gap:6px}
-  .meta .check{color:var(--green)}
-
-  /* ---------- PANELS ---------- */
-  .wrap{position:relative;z-index:2;width:100%;padding:0 16px}
-  .panel{
-    position:relative;width:min(96vw,1080px);margin:0 auto clamp(28px,5vh,48px);
-    background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;
-    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-    box-shadow:0 12px 30px rgba(0,0,0,.45);
-  }
-  .panel .in{padding:clamp(22px,4vw,44px)}
-
-  .stats-panel{width:min(92vw,720px);margin-top:clamp(20px,4vh,36px)}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0}
-  .stat{padding:22px 12px;text-align:center;border-right:1px solid var(--line)}
-  .stat:last-child{border-right:none}
-  .stat .v{font:700 28px/1 var(--head);color:var(--amber);letter-spacing:.04em;font-variant-numeric:tabular-nums}
-  .stat .l{font:500 11px/1 var(--head);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:8px}
-
-  .head{text-align:center;margin-bottom:32px}
-  .kicker{
-    display:inline-block;font:600 12px/1 var(--head);letter-spacing:.28em;text-transform:uppercase;
-    color:var(--amber);padding:6px 10px;border:1px solid var(--line);border-radius:3px;margin-bottom:14px;
-  }
-  .sect-title{margin:0 0 10px;font:700 clamp(24px,3.4vw,38px)/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-  .sect-title span{color:var(--amber)}
-  .sect-sub{margin:0 auto;color:var(--muted);font-size:14px;line-height:1.6;max-width:640px}
-
-  /* features */
-  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .feature{
-    padding:24px 20px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:4px;
-    transition:transform .2s ease,border-color .2s ease,background-color .2s ease;
-  }
-  .feature:hover{border-color:var(--amber);background:rgba(242,183,5,.06);transform:translateY(-3px)}
-  .feature .ico{font-size:26px;line-height:1;filter:drop-shadow(0 0 10px rgba(242,183,5,.25))}
-  .feature h3{margin:14px 0 8px;font:700 16px/1.2 var(--head);letter-spacing:.14em;color:var(--amber);text-transform:uppercase}
-  .feature p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.7}
-
-  /* platforms */
-  .platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .platform{
-    position:relative;padding:30px 18px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:4px;
-    text-align:center;transition:transform .2s ease,border-color .2s ease,background-color .2s ease;
-  }
-  .platform.ready:hover{border-color:var(--amber);background:rgba(242,183,5,.06);transform:translateY(-3px)}
-  .platform.dev{opacity:.6;border-style:dashed}
-  .p-ico{font-size:40px;line-height:1;filter:drop-shadow(0 0 12px rgba(242,183,5,.3))}
-  .platform h4{margin:14px 0 6px;font:700 16px/1 var(--head);letter-spacing:.14em;color:var(--ink);text-transform:uppercase}
-  .platform small{color:var(--dim);font-size:12px;letter-spacing:.06em}
-  .badge{
-    position:absolute;top:10px;right:10px;font:600 10px/1 var(--head);
-    letter-spacing:.18em;text-transform:uppercase;padding:5px 8px;border-radius:3px;
-  }
-  .badge.ready{background:rgba(123,211,107,.14);color:#7bd36b;border:1px solid rgba(123,211,107,.4)}
-  .badge.dev{background:rgba(255,122,26,.14);color:var(--hot);border:1px solid rgba(255,122,26,.4);animation:blink 1.8s infinite}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
-
-  /* steps */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .step{
-    position:relative;padding:26px 20px 22px;background:rgba(0,0,0,.28);
-    border:1px solid var(--line);border-top:2px solid var(--amber);border-radius:4px;
-  }
-  .step .n{font:900 28px/1 var(--head);color:var(--amber);letter-spacing:.04em;margin-bottom:10px;text-shadow:0 0 14px rgba(242,183,5,.3)}
-  .step h4{margin:0 0 8px;font:700 15px/1.2 var(--head);letter-spacing:.16em;color:var(--ink);text-transform:uppercase}
-  .step p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.7}
-
-  /* cta */
-  .cta .in{text-align:center;padding:clamp(32px,6vw,64px) clamp(22px,4vw,44px)}
-  .cta h2{margin:0 0 10px;font:900 clamp(28px,5vw,52px)/1.05 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-  .cta h2 span{color:var(--amber)}
-  .cta p{margin:0 0 28px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:12px}
-
-  footer{position:relative;z-index:2;padding:24px 16px 12px;text-align:center;font:12px var(--body);color:#7a7367;letter-spacing:.06em}
-  footer strong{color:var(--amber)}
-
-  @media (max-width:520px){
-    .btns{gap:10px;max-width:340px}
-    .btn{flex:1 1 calc(50% - 10px);justify-content:center;padding:10px 12px;font-size:16px;letter-spacing:.1em}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .stat:nth-child(2n){border-right:none}
-    .stat:nth-child(n+3){border-top:1px solid var(--line)}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .sign,.beacon{animation:none}
-  }
-</style>
 </head>
 <body>
+<div class="scene" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
-
-<main>
-  <section class="hero">
-    <h1 class="logo" aria-label="DECAY — survive, rebuild, decay" style="margin:0">
-      <span class="sign-wrap">
-        <span class="beacon"></span>
-        <span class="shake" id="shake">
-          <svg class="sign" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="tri" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#ffd23a"/>
-                <stop offset="1" stop-color="#d99a06"/>
-              </linearGradient>
-            </defs>
-            <polygon points="100,14 186,178 14,178" fill="url(#tri)" stroke="#0b0a08" stroke-width="12" stroke-linejoin="round"/>
-            <g fill="#0b0a08">
-              <!-- шестерёнка -->
-              <g transform="translate(100 72)">
-                <g>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(45)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(90)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(135)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(180)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(225)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(270)"/>
-                  <rect x="-4" y="-24" width="8" height="12" rx="1.5" transform="rotate(315)"/>
-                </g>
-                <circle r="17"/>
-                <circle r="7" fill="#ffd23a"/>
-              </g>
-              <!-- болт -->
-              <g transform="translate(58 122) rotate(-14)">
-                <rect x="-6" y="-20" width="12" height="34" rx="2"/>
-                <rect x="-2" y="12" width="4" height="14" rx="1"/>
-              </g>
-              <!-- балка с отверстиями -->
-              <g transform="translate(114 128) rotate(-18)">
-                <rect x="-30" y="-9" width="60" height="18" rx="2"/>
-                <circle cx="-16" cy="0" r="2.6" fill="#ffd23a"/>
-                <circle cx="0" cy="0" r="2.6" fill="#ffd23a"/>
-                <circle cx="16" cy="0" r="2.6" fill="#ffd23a"/>
-              </g>
-              <!-- стрелка -->
-              <path d="M138 142 l20 0 -10 16 z"/>
-              <!-- рваный металл снизу -->
-              <path d="M30 178 L30 168 L42 156 L54 168 L66 156 L78 168 L90 156 L102 168 L114 156 L126 168 L138 156 L150 168 L162 156 L170 164 L170 178 Z"/>
-            </g>
-          </svg>
-        </span>
-      </span>
-      <span class="word"><span>DE</span><span class="a">CAY</span></span>
-    </h1>
-
-    <div class="tagline">Survive · Rebuild · Decay</div>
-
+<div class="bar" id="bar">
+  <a class="brand" href="#top"><img src="images/icon.svg" alt="">DE<span>CAY</span></a>
+  <nav class="menu"><a href="#features">Фичи</a><a href="#platforms">Платформы</a><a href="#start">Старт</a></nav>
+  <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe" style="min-height:38px;padding:8px 16px;font-size:16px">Скачать</a>
+</div>
+<main id="top">
+  <header class="hero">
+    <div class="tag">Игра от <b>Real_Studio</b></div>
+    <img class="hero-logo" src="images/logo.svg" alt="DECAY" width="600" height="600">
+    <h1 class="word" aria-label="DECAY">DE<span>CAY</span></h1>
+    <div class="sub"><i></i>Survive · Rebuild<i></i></div>
     <nav class="btns">
-      <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-        Скачать лаунчер
-      </a>
+      <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Скачать лаунчер</a>
       <a class="btn alt" href="#features">Узнать больше</a>
-      <a class="btn alt" href="https://github.com/vovapro01345/decay-launcher" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-        GitHub
-      </a>
     </nav>
+    <div class="meta"><span>Windows 10/11</span><span>Android</span><span>Бесплатно</span><span>Последняя версия</span></div>
+  </header>
 
-    <div class="meta">
-      <span><span class="check">✓</span> Windows 10/11</span>
-      <span><span class="check">✓</span> Android</span>
-      <span><span class="check">✓</span> Бесплатно</span>
-      <span><span class="check">✓</span> Последняя версия</span>
-    </div>
-
-    <section class="panel stats-panel" aria-label="Статистика DECAY">
-      <div class="hazard"></div>
-      <div class="in stats">
-        <div class="stat"><div class="v">2</div><div class="l">Платформы</div></div>
-        <div class="stat"><div class="v">∞</div><div class="l">Миров</div></div>
-        <div class="stat"><div class="v">24/7</div><div class="l">Серверы</div></div>
-        <div class="stat"><div class="v">100%</div><div class="l">Хардкор</div></div>
-      </div>
-    </section>
-  </section>
-
-  <div class="wrap">
-
-    <section class="panel" id="features">
-      <div class="hazard"></div>
-      <div class="in">
-        <div class="head">
-          <div class="kicker">Возможности</div>
-          <h2 class="sect-title">ЧТО ДЕЛАЕТ <span>DECAY</span> ОСОБЕННОЙ</h2>
-          <p class="sect-sub">Каждая механика продумана до мелочей. Здесь нет места случайностям — только твои решения и их последствия.</p>
-        </div>
-        <div class="features">
-          <div class="feature"><div class="ico">⚔</div><h3>Выживание</h3><p>Ограниченные ресурсы, суровые условия и постоянная угроза. Каждое решение имеет значение — не расслабляйся ни на секунду.</p></div>
-          <div class="feature"><div class="ico">🌐</div><h3>Мультиплеер</h3><p>Объединяйся с друзьями или вступай в конфликт. Открытый мир, где каждый строит свою историю и защищает её.</p></div>
-          <div class="feature"><div class="ico">⚙</div><h3>Крафт</h3><p>Собирай, создавай, улучшай. Глубокая система рецептов и апгрейдов для тех, кто умеет думать на шаг вперёд.</p></div>
-          <div class="feature"><div class="ico">💀</div><h3>Хардкор</h3><p>Смерть — это не конец, но каждый раз всё сложнее. Мир помнит твои ошибки и не прощает слабости.</p></div>
-          <div class="feature"><div class="ico">🎨</div><h3>Атмосфера</h3><p>Ржавый, индустриальный стиль. Мрачный мир, в котором каждая деталь — от текстуры до звука — имеет значение.</p></div>
-          <div class="feature"><div class="ico">🔧</div><h3>Открытая разработка</h3><p>Лаунчер и обновления доступны публично. Следи за развитием проекта изнутри и вноси свой вклад.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="platforms">
-      <div class="hazard"></div>
-      <div class="in">
-        <div class="head">
-          <div class="kicker">Кроссплатформенность</div>
-          <h2 class="sect-title">ИГРАЙ <span>ГДЕ УГОДНО</span></h2>
-          <p class="sect-sub">Один аккаунт — любые устройства. Прогресс синхронизируется между всеми поддерживаемыми платформами.</p>
-        </div>
-        <div class="platforms">
-          <div class="platform ready">
-            <span class="badge ready">Готово</span>
-            <div class="p-ico">🪟</div>
-            <h4>Windows</h4>
-            <small>Windows 10 / 11 · 64-bit</small>
-          </div>
-          <div class="platform ready">
-            <span class="badge ready">Готово</span>
-            <div class="p-ico">🤖</div>
-            <h4>Android</h4>
-            <small>Android 8.0+ · ARM64</small>
-          </div>
-          <div class="platform dev">
-            <span class="badge dev">В разработке</span>
-            <div class="p-ico">🐧</div>
-            <h4>Linux</h4>
-            <small>Ubuntu · Arch · Fedora</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="start">
-      <div class="hazard"></div>
-      <div class="in">
-        <div class="head">
-          <div class="kicker">Как начать</div>
-          <h2 class="sect-title">ТРИ ШАГА ДО <span>ИГРЫ</span></h2>
-          <p class="sect-sub">Установка занимает меньше минуты. Дальше — всё зависит только от тебя.</p>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="n">01</div>
-            <h4>Скачай</h4>
-            <p>Нажми кнопку «Скачать лаунчер» вверху страницы. Файл загрузится напрямую.</p>
-          </div>
-          <div class="step">
-            <div class="n">02</div>
-            <h4>Запусти</h4>
-            <p>Открой .exe файл. Лаунчер сам скачает последнюю версию игры и все необходимые файлы.</p>
-          </div>
-          <div class="step">
-            <div class="n">03</div>
-            <h4>Играй</h4>
-            <p>Войди в аккаунт, выбери сервер и окунись в мир Decay. Удачи — она тебе понадобится.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel cta">
-      <div class="hazard"></div>
-      <div class="in">
-        <h2>ГОТОВ <span>ВЫЖИТЬ</span>?</h2>
-        <p>Твой мир Decay ждёт</p>
-        <a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-          Скачать лаунчер
-        </a>
-      </div>
-    </section>
-
+  <div class="hazard"></div>
+  <div class="stats" style="margin-top:40px">
+    <div><b>2</b><small>Платформы</small></div><div><b>∞</b><small>Миров</small></div>
+    <div><b>24/7</b><small>Серверы</small></div><div><b>100%</b><small>Хардкор</small></div>
   </div>
+
+  <section id="features"><div class="wrap">
+    <div class="head rv"><div class="kick">Возможности</div><h2 class="t">Что делает <span>Decay</span> особенной</h2>
+      <p class="lead">Каждая механика продумана до мелочей. Здесь нет места случайностям — только твои решения и их последствия.</p></div>
+    <div class="grid">
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Выживание</h3><p>Ограниченные ресурсы, суровые условия и постоянная угроза. Каждое решение имеет значение.</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Мультиплеер</h3><p>Объединяйся с друзьями или вступай в конфликт. Открытый мир, где каждый строит свою историю.</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Крафт</h3><p>Собирай, создавай, улучшай. Глубокая система рецептов и апгрейдов.</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Хардкор</h3><p>Смерть — не конец, но каждый раз всё сложнее. Мир помнит твои ошибки.</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Атмосфера</h3><p>Ржавый индустриальный стиль. Мрачный мир, где важна каждая деталь.</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><h3>Открытая разработка</h3><p>Лаунчер и обновления доступны публично. Следи за развитием проекта изнутри.</p></div></div>
+    </div>
+  </div></section>
+
+  <section id="platforms"><div class="wrap">
+    <div class="head rv"><div class="kick">Кроссплатформенность</div><h2 class="t">Играй <span>где угодно</span></h2>
+      <p class="lead">Один аккаунт — любые устройства. Прогресс синхронизируется между платформами.</p></div>
+    <div class="grid">
+      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st">Готово</span><h3>Windows</h3><p>Windows 10 / 11 · 64-bit</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st">Готово</span><h3>Android</h3><p>Android 8.0+ · ARM64</p></div></div>
+      <div class="card rv"><div class="hazard"></div><div class="in"><span class="st dev">В разработке</span><h3>Linux</h3><p>Ubuntu · Arch · Fedora</p></div></div>
+    </div>
+  </div></section>
+
+  <section id="start"><div class="wrap">
+    <div class="head rv"><div class="kick">Как начать</div><h2 class="t">Три шага до <span>игры</span></h2>
+      <p class="lead">Установка занимает меньше минуты. Дальше всё зависит только от тебя.</p></div>
+    <div class="grid">
+      <div class="card rv"><div class="in"><div class="num">01</div><h3>Скачай</h3><p>Нажми «Скачать лаунчер». Файл загрузится напрямую.</p></div></div>
+      <div class="card rv"><div class="in"><div class="num">02</div><h3>Запусти</h3><p>Открой .exe — лаунчер сам скачает последнюю версию игры и нужные файлы.</p></div></div>
+      <div class="card rv"><div class="in"><div class="num">03</div><h3>Играй</h3><p>Войди в аккаунт, выбери сервер и окунись в мир Decay.</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="cta"><div class="wrap">
+    <h2 class="t">Готов <span>выжить</span>?</h2><p class="lead">Твой мир Decay ждёт</p>
+    <nav class="btns"><a class="btn" href="https://github.com/vovapro01345/decay-launcher/releases/latest/download/decay-launcher.exe">Скачать лаунчер</a></nav>
+  </div></section>
 </main>
-
-<footer>© 2025 <strong>DECAY</strong> · Сделано в Real_Studio</footer>
-
+<footer>
+  <a href="#features">Фичи</a><a href="#platforms">Платформы</a><a href="#start">Старт</a><br><br>
+  © <span id="yr">2026</span> DECAY · Real_Studio
+</footer>
 <script src="js/fx.js" defer></script>
-<script>
-  // обломок упал рядом — знак вздрагивает (как в index.html)
-  (function(){
-    var el=document.getElementById('shake'); if(!el||!el.animate) return;
-    var rm=matchMedia('(prefers-reduced-motion: reduce)'), busy=0;
-    addEventListener('sf-impact',function(e){
-      if(rm.matches||busy) return; busy=1; var s=2+4*e.detail.s;
-      el.animate([
-        {transform:'translate(0,0)'},
-        {transform:'translate('+(-s)+'px,'+(s*.6)+'px)'},
-        {transform:'translate('+(s*.7)+'px,'+(-s*.3)+'px)'},
-        {transform:'translate('+(-s*.3)+'px,'+(s*.2)+'px)'},
-        {transform:'translate(0,0)'}
-      ],{duration:380,easing:'ease-out'}).onfinish=function(){busy=0};
-    });
-  })();
-</script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
