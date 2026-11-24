@@ -1,0 +1,29 @@
+(function () {
+  "use strict";
+  // Русский текст лежит в HTML, английский — здесь (ключ = номер data-i / data-ip).
+  var EN = {"1": "Survival", "2": "Limited resources, harsh conditions and constant danger. Every decision matters.", "3": "Multiplayer", "4": "Team up with friends or take sides. An open world where everyone builds their own story.", "5": "Crafting", "6": "Gather, build, upgrade. A deep system of recipes and upgrades.", "7": "Hardcore", "8": "Death is not the end, but it gets harder every time. The world remembers your mistakes.", "9": "Atmosphere", "10": "A rusty industrial style. A grim world where every detail counts.", "11": "Active development", "12": "The launcher and updates are available to everyone. Follow the project in the devlog and on Telegram.", "13": "Ready", "14": "Windows 10 / 11 · 64-bit", "15": "Android 8.0+ · ARM64", "16": "In development", "17": "Ubuntu · Arch · Fedora", "18": "Download", "19": "Press “Download launcher”. The file downloads directly.", "20": "Launch", "21": "Open the .exe — the launcher fetches the latest game version and all required files.", "22": "Play", "23": "Sign in, pick a server and dive into the world of Decay.", "24": "Is it free?", "25": "Yes, the launcher and the game are free.", "26": "Which devices are supported?", "27": "Right now: Windows 10/11 (64-bit) and Android 8.0+. Linux is in development.", "28": "How do I install the game?", "29": "Download the launcher and run it — it downloads the game and all files by itself. See “Get started”.", "30": "My antivirus flags the .exe. What now?", "31": "The launcher is a new, little-known file, so antivirus software may warn about it. Download it only from this website or the official Telegram channel. If in doubt, contact us.", "32": "Where do I report a bug or suggest an idea?", "33": "On the Feedback page or in the game’s Telegram channel.", "34": "When will Linux be released?", "35": "There is no exact date yet. Follow the Roadmap and the devlog.", "36": "Game by", "37": "Download launcher", "38": "Devlog", "39": "Feedback", "40": "Free", "41": "Latest version", "42": "Platforms", "43": "Worlds", "44": "Servers", "45": "Features", "46": "What makes", "47": "special", "48": "Every mechanic is thought through. No room for chance — only your decisions and their consequences.", "49": "Cross-platform", "50": "anywhere", "51": "One account, any device. Progress syncs across platforms.", "52": "Get started", "53": "Three steps to", "54": "the game", "55": "Setup takes under a minute. The rest is up to you.", "56": "Questions & answers", "57": "Frequently asked", "58": "questions", "59": "Can’t find an answer? Ask in Telegram or leave feedback.", "60": "Ready to", "61": "survive", "62": "Your Decay world awaits", "63": "DECAY — Survival Multiplayer by Real_Studio", "64": "Game", "65": "Roadmap", "66": "FAQ", "67": "Download", "68": "Development plan", "69": "What is done, what we are working on and what is planned. The list is updated along with the project.", "70": "Launcher for Windows 10/11", "71": "Launcher for Android 8.0+", "72": "One account for all platforms", "73": "New website: devlog, FAQ, RU/EN", "74": "In progress", "75": "Launcher for Linux", "76": "News and servers in the launcher", "77": "Planned", "78": "Server status on the website", "79": "Screenshots and trailer", "80": "Open test", "81": "Items can be edited in roadmap/index.html.", "82": "Roadmap — DECAY", "83": "Project news", "84": "Notes on what is happening with Decay: updates, plans and changes.", "85": "Website", "86": "New website", "87": "The Decay website has a new design. Added the Roadmap and Devlog pages, an FAQ, a feedback form, an RU/EN switch and sound. The launcher version is now fetched from GitHub automatically.", "88": "Launcher", "89": "The launcher is available for Windows and Android. The Linux version is in development.", "90": "Add entries in devlog/index.html — just copy an <article> block.", "91": "Devlog — DECAY", "92": "Contact", "93": "Found a bug or have an idea? Tell us — it helps make Decay better.", "94": "Type", "95": "Bug", "96": "Idea", "97": "Other", "98": "Title", "99": "Short summary", "100": "Description", "101": "What happened, how to reproduce, which device", "102": "Send via GitHub", "103": "A GitHub Issues page opens with your text prefilled — just press “Submit”. A GitHub account is required.", "104": "All issues", "105": "Write on Telegram", "106": "Feedback — DECAY", "107": "Nothing here", "108": "Home", "109": "404 — DECAY"};
+  var lang = "ru";
+  try { lang = localStorage.getItem("lang") || (/^(ru|uk|be)/i.test(navigator.language) ? "ru" : "en"); } catch (e) {}
+  function apply(l) {
+    lang = l; window.DECAY_LANG = l;
+    document.documentElement.lang = l;
+    [].forEach.call(document.querySelectorAll("[data-i]"), function (el) {
+      if (el.dataset.ru === undefined) el.dataset.ru = el.textContent;
+      el.textContent = l === "en" && EN[el.dataset.i] ? EN[el.dataset.i] : el.dataset.ru;
+    });
+    [].forEach.call(document.querySelectorAll("[data-ip]"), function (el) {
+      if (el.dataset.ru === undefined) el.dataset.ru = el.getAttribute("placeholder");
+      el.setAttribute("placeholder", l === "en" ? EN[el.dataset.ip] : el.dataset.ru);
+    });
+    var b = document.getElementById("lang"); if (b) b.textContent = l === "en" ? "RU" : "EN";
+    try { localStorage.setItem("lang", l); } catch (e) {}
+    window.dispatchEvent(new CustomEvent("langchange", { detail: l }));
+  }
+  window.DECAY_LANG = lang;
+  window.t = function (ru, en) { return window.DECAY_LANG === "en" ? en : ru; };
+  document.addEventListener("DOMContentLoaded", function () {
+    var b = document.getElementById("lang");
+    if (b) b.addEventListener("click", function () { apply(lang === "en" ? "ru" : "en"); });
+    if (lang === "en") apply("en"); else if (b) b.textContent = "EN";
+  });
+})();

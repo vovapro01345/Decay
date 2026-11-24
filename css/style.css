@@ -18,8 +18,8 @@ html{scroll-behavior:smooth}
   @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
   .head{text-align:center;margin-bottom:34px}
   .kick{font:500 14px/1 var(--head);letter-spacing:.34em;text-transform:uppercase;color:var(--amber);padding-left:.34em}
-  h2.t{margin:10px 0 8px;font:600 clamp(28px,5vw,44px)/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;text-shadow:0 2px 0 #000}
-  h2.t span{color:var(--amber)}
+  h1.t,h2.t{margin:10px 0 8px;font:600 clamp(28px,5vw,44px)/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;text-shadow:0 2px 0 #000}
+  .t .am{color:var(--amber)}
   .lead{margin:0 auto;max-width:560px;color:var(--muted);font:15px/1.5 var(--body)}
   .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.45);
         -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
@@ -56,5 +56,41 @@ section{scroll-margin-top:60px}
 /* reveal on scroll (only with JS) */
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .js .rv.in{opacity:1;transform:none}
-@media (max-width:520px){.menu{display:none}}
+@media (max-width:760px){.menu{display:none}}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.hero-logo{animation:none}}
+
+/* v2: tools, version, pages, faq, forms */
+.tools{display:flex;align-items:center;gap:8px}
+.ic{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #3a352d;border-radius:4px;background:rgba(14,12,9,.6);color:var(--muted);cursor:pointer;font:500 14px/1 var(--head);letter-spacing:.08em;transition:color .15s,border-color .15s}
+.ic:hover,.ic:focus-visible{color:var(--amber);border-color:var(--amber);outline:none}
+.ic svg{width:20px;height:20px}
+#snd .w{display:none}#snd[aria-pressed=true] .w{display:inline}#snd[aria-pressed=true] .x{display:none}#snd[aria-pressed=true]{color:var(--amber);border-color:var(--amber)}
+.btn.dl{min-height:38px;padding:8px 16px;font-size:16px}
+.shake{display:block}
+.ver{margin-top:14px;font:500 13px/1.3 var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.ver b{color:var(--amber);font-weight:500}
+.narrow{max-width:720px}
+.phead{text-align:center;padding:120px 16px 30px}
+.phead .lead{margin:10px auto 0}
+.cols{align-items:start}
+.col h3{margin-bottom:12px}
+.col ul{margin:0;padding:0;list-style:none}
+.col li{position:relative;padding:8px 0 8px 22px;border-top:1px solid var(--line);font:14px/1.4 var(--body);color:var(--muted)}
+.col li::before{content:"";position:absolute;left:2px;top:15px;width:9px;height:9px;border-radius:50%;background:var(--dim)}
+.col.done li::before{background:#7bd36b}.col.wip li::before{background:var(--amber)}.col.plan li::before{background:transparent;border:2px solid var(--dim)}
+.entry{margin-bottom:16px}
+.em{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.em time{font:500 14px/1 var(--head);letter-spacing:.14em;color:var(--amber)}
+.note{margin:18px 0 0;font:13px/1.5 var(--body);color:var(--dim);text-align:center}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.qa summary{cursor:pointer;list-style:none;padding:16px 46px 16px 18px;font:500 18px/1.25 var(--head);letter-spacing:.06em;text-transform:uppercase;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font:500 26px/1 var(--head);color:var(--amber);transition:transform .2s}
+.qa[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.qa p{margin:0;padding:0 18px 16px;color:var(--muted);font:14px/1.55 var(--body)}
+form label{display:block;margin:14px 0 6px;font:500 13px/1 var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+form label:first-child{margin-top:0}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid #3a352d;border-radius:4px;background:rgba(0,0,0,.35);color:var(--ink);font:15px/1.4 var(--body)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(242,183,5,.15)}
+form .btn{margin-top:18px;border:0;cursor:pointer}
+.grid .btn{justify-content:center}
