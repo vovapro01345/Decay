@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://*.goatcounter.com; manifest-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title data-i="63">DECAY — Survival Multiplayer by Real_Studio</title>
 <meta name="description" content="DECAY — кроссплатформенная survival-игра от Real_Studio. Скачай лаунчер и окунись в ржавый мир выживания.">
@@ -22,7 +24,7 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/oswald-cyr.woff2" as="font" type="font/woff2" crossorigin>
-<script>document.documentElement.className+=" js"</script>
+<script src="js/boot.js"></script>
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -57,7 +59,7 @@
     <div class="meta"><span>Windows 10/11</span><span>Android</span><span data-i="40">Бесплатно</span><span data-i="41">Последняя версия</span></div>
   </header>
   <div class="hazard"></div>
-  <div class="stats" style="margin-top:40px">
+  <div class="stats mt40">
     <div><b>2</b><small data-i="42">Платформы</small></div><div><b>∞</b><small data-i="43">Миров</small></div>
     <div><b>24/7</b><small data-i="44">Серверы</small></div><div><b>100%</b><small data-i="7">Хардкор</small></div>
   </div>
